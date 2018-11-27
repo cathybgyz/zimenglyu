@@ -21,7 +21,7 @@ First, open Android Studio and click "Start a new Android Studio project". This 
 
 ![](/images/tflite-android/1.png)
 
-Next, give your project an application name, company domain (important when deploying your app to the Play Store, also influences your Java code namespaces), project location, and package name. 
+Next, give your project an application name, company domain (important when deploying your app to the Play Store and also influences your Java code namespaces), project location, and package name. 
 
 Be sure to check "Include C++ support," as this will enable many of the features required to interact with the Android NDK, Java's JNI, and C++ source code. More on [working with native code and Android Studio][add-native-code].
 
