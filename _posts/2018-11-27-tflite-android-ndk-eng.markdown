@@ -8,7 +8,7 @@ categories: android tensorflow machinelearning mobile english
 
 # Preamble
 
-This guide came out of the necesity to understand how Tensorflow Lite integrates with native C++ code and the Android NDK. The steps I present here come from many sources and snippits of information. Prior to writing this guide, I could not find a comprehensive and easy to understand tutorial on how to do this. So I decided to write one.
+This guide came out of the necesity to understand how Tensorflow Lite integrates with native C++ code and the Android NDK. The steps I present here come from many sources and snippits of information. Prior to writing this guide, I could not find a comprehensive and easy to understand tutorial on how to assemble everything together. So I decided to write one.
 
 _Note: I strongly recommend you use Mac OS to build and configure your Tensorflow Lite libraries. I found Windows 10 build steps unreliable and difficult to work with at the time of writing this guide._
 
@@ -50,7 +50,7 @@ Optionally you can enable Exceptions Support and Runtime Type Information. These
 
 ![](/images/tflite-android/7.png)
 
-After finish the Android Studio project wizzard you should see the Android Studio main window.
+After finishing the Android Studio project wizzard you should see the Android Studio main window.
 
 ![](/images/tflite-android/8.png)
 
