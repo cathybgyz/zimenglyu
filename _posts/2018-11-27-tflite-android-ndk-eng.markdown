@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Tensorflow Lite, C++ and Android NDK"
+title:  "TensorFlow Lite, C++ and Android NDK"
 author: Zimeng Lyu
 date:   2018-11-27 10:35:26 -0500
 categories: android tensorflow machinelearning mobile english
