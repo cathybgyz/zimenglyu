@@ -16,6 +16,8 @@ _Note: I strongly recommend you use Mac OS to build and configure your Tensorflo
 
 We'll start by creating an Android Studio project in Android Studio. If you already have an Android Studio project you can skip these steps, but make sure C++ support is enabled (default toolchain).
 
+_Note: If you don't have Android Studio installed you can [Get Android Studio][android-studio]_
+
 An Android Studio project is the foundation for all Android platform applications. The project directory contains all of your graphical interfaces, source code, images and resources. It also includes the refernces and build instructions for your library code. You may know some of them: CMakeLists.txt, build.gradle, android.mk etc. While this guide does not get into details about these resources, you should learn how they work in your projects.
 
 First, open Android Studio and click "Start a new Android Studio project". This will initiate the new project wizzard.
@@ -52,8 +54,47 @@ After finish the Android Studio project wizzard you should see the Android Studi
 
 ![](/images/tflite-android/8.png)
 
+# Building TensorFlow Lite [libtensorflowlite.so, libtflite.so]
 
+Now that we've setup our Android Studio project we can start building TensorFlow Lite. And the first thing we need to do is [Get Bazel][bazel-url]. Install steps below...
+
+_Note: If you do not have Homebrew installed on your machine I strongly recommend you get it. It is one of the greatest package managers on Mac OS. [Get Homebrew][homebrew-url]_
+
+Installing Homebew (`brew`):
+
+~~~
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+~~~
+
+Installing Bazel with Homebrew is the quickest way to get going:
+
+~~~
+brew tap bazelbuild/tap
+brew tap-pin bazelbuild/tap
+brew install bazelbuild/tap/bazel
+~~~
+
+You can then verify `bazel` is working correctly. I used `0.18.1-homebrew` so your version may differ or may be incompatible at the time this article was written.
+
+~~~
+bazel version
+~~~
+
+Output:
+
+~~~
+ZimengMacbookPro:zimenglyu zimenglyu$ bazel version
+WARNING: --batch mode is deprecated. Please instead explicitly shut down your Bazel server using the command "bazel shutdown".
+Build label: 0.18.1-homebrew
+Build target: bazel-out/darwin-opt/bin/src/main/java/com/google/devtools/build/lib/bazel/BazelServer_deploy.jar
+Build time: Fri Nov 2 11:16:42 2018 (1541157402)
+Build timestamp: 1541157402
+Build timestamp as int: 1541157402
+~~~
+
+[android-studio]: https://developer.android.com/studio/
 [add-native-code]: https://developer.android.com/studio/projects/add-native-code
 [instant-run]: https://developer.android.com/studio/run/#instant-run
 [intro-to-activities]: https://developer.android.com/guide/components/activities/intro-activities
-
+[bazel-url]: https://bazel.build
+[homebrew-url]: https://brew.sh
