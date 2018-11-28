@@ -6,7 +6,7 @@ date:   2018-11-27 10:35:26 -0500
 categories: android tensorflow machinelearning mobile english
 ---
 
-Github Repo: [TFLiteExample][project-repo]
+Github: [TFLiteExample][project-repo]
 
 # Purpose
 
