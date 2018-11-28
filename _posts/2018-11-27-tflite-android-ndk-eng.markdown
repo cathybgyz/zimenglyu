@@ -6,6 +6,8 @@ date:   2018-11-27 10:35:26 -0500
 categories: android tensorflow machinelearning mobile english
 ---
 
+Github Repo: [TFLiteExample][project-repo]
+
 # Purpose
 
 I could not find a comprehensive and easy to understand tutorial on getting TensorFlow Lite working with native code and the Android NDK. So I decided to write one.
@@ -92,6 +94,7 @@ Build timestamp: 1541157402
 Build timestamp as int: 1541157402
 ~~~
 
+[project-repo]: https://github.com/cathybgyz/TFLiteExample
 [android-studio]: https://developer.android.com/studio/
 [add-native-code]: https://developer.android.com/studio/projects/add-native-code
 [instant-run]: https://developer.android.com/studio/run/#instant-run
