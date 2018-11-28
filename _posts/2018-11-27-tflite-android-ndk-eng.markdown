@@ -8,7 +8,7 @@ categories: android tensorflow machinelearning mobile english
 
 # Preamble
 
-This guide came out of the necesity to understand how Tensorflow Lite integrates with native C++ code and the Android NDK. The steps I present here come from many sources and snippits of information. Prior to writing this guide, I could not find a comprehensive and easy to understand tutorial on how to assemble everything together. So I decided to write one.
+This guide came necesity, to understand how Tensorflow Lite integrates with native C++ code and the Android NDK. The steps I present here come from many sources and snippits of information. Prior to writing this guide, I could not find a comprehensive and easy to understand tutorial on how to assemble everything together. So I decided to write one.
 
 _Note: I strongly recommend you use Mac OS to build and configure your Tensorflow Lite libraries. I found Windows 10 build steps unreliable and difficult to work with at the time of writing this guide._
 
