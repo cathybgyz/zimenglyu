@@ -18,9 +18,9 @@ We'll start by creating an Android Studio project in Android Studio. If you alre
 
 _Note: If you don't have Android Studio installed you can [Get Android Studio][android-studio]_
 
-An Android Studio project is the foundation for all Android platform applications. The project directory contains all of your graphical interfaces, source code, images and resources. It also includes the refernces and build instructions for your library code. You may know some of them: CMakeLists.txt, build.gradle, android.mk etc. While this guide does not get into details about these resources, you should learn how they work in your projects.
+An Android Studio project is the foundation for all Android platform applications. The project directory contains all of your graphical interfaces, source code, images and resources. It also includes the references and build instructions for your library code. You may know some of them: CMakeLists.txt, build.gradle, android.mk etc. While this guide does not get into details about these resources, you should learn how they work in your projects.
 
-First, open Android Studio and click "Start a new Android Studio project". This will initiate the new project wizzard.
+First, open Android Studio and click "Start a new Android Studio project". This will initiate the new project wizard.
 
 ![](/images/tflite-android/1.png)
 
@@ -40,7 +40,7 @@ For a tutorial project we'll choose an Empty Activity. The Basic Activity includ
 
 ![](/images/tflite-android/5.png)
 
-On the next screen, we'll just continue with the defaults the project wizzard provides us.
+On the next screen, we'll just continue with the defaults the project wizard provides us.
 
 ![](/images/tflite-android/6.png)
 
@@ -50,7 +50,7 @@ Optionally you can enable Exceptions Support and Runtime Type Information. These
 
 ![](/images/tflite-android/7.png)
 
-After finishing the Android Studio project wizzard you should see the Android Studio main window.
+After finishing the Android Studio project wizard you should see the Android Studio main window.
 
 ![](/images/tflite-android/8.png)
 
