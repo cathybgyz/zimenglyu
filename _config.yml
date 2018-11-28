@@ -18,7 +18,7 @@ email:
 description: >- # this means to ignore newlines until "baseurl:"
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://zimenglyu.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://zimenglyu.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: cathybgyz
 linkedin_username: zimenglyu
 
