@@ -5,7 +5,7 @@ My personal website : https://zimenglyu.com
 
 1) Install Jekyll
 ```
-gem install bundler jekyll
+sudo gem install bundler jekyll
 ```
 
 2) Clone the repo
