@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "TensorFlow Lite, Android NDK (中文简体)"
+title:  "在 Android NDK 上使用 C++ TensorFlow Lite 步骤"
 author: 吕子蒙
 date:   2018-11-27 10:35:26 -0500
 categories: android tensorflow machinelearning mobile chinese
@@ -17,60 +17,61 @@ _请注意：强烈建议大家用 Mac OS 环境编译，在写这篇文章之�
 
 # 步骤
 
-We'll start by creating an Android Studio project in Android Studio. If you already have an Android Studio project you can skip these steps, but make sure C++ support is enabled (default toolchain).
-我们首先要在 Android Studio 上面创建一个 Android Studio project。如果你已经在 Android Studio 上面建好了 project, 可以跳过这个步骤， 但是要确保添加了C++支持
+我们首先要在 Android Studio 上面创建一个 Android Studio project。如果你已经在 Android Studio 上面建好了 project, 可以跳过这个步骤， 但是要确保添加了C++支持。
 
-_Note: If you don't have Android Studio installed you can [Get Android Studio][android-studio]_
 
-An Android Studio project is the foundation for all Android platform applications. The project directory contains all of your graphical interfaces, source code, images and resources. It also includes the references and build instructions for your library code. You may know some of them: CMakeLists.txt, build.gradle, android.mk etc. While this guide does not get into details about these resources, you should learn how they work in your projects.
+_注：如果你还没有安装 Android Studio， 可以在[这里下载][android-studio]_
 
-First, open Android Studio and click "Start a new Android Studio project". This will initiate the new project wizard.
+Android Studio project 是所有Android平台应用程序的基础。项目目录包含所有图形界面，源代码，图像和其他资源。它还包括库代码的引用和构建说明。你应该了解基本的关于：CMakeLists.txt，build.gradle，android.mk等的工作方式，这里没有详细介绍。
+
+首先，打开 Android Studio 并点击 "Start a new Android Studio project" 来打开新的项目页面。
+
 
 ![](/images/tflite-android/1.png)
 
-Next, give your project an application name, company domain (important when deploying your app to the Play Store and also influences your Java code namespaces), project location, and package name. 
+接着，填写应用程序名称，公司域名（在将应用程序部署到Play商店时很重要，也会影响Java代码名称空间），项目位置和 package 名称。
 
-Be sure to check "Include C++ support," as this will enable many of the features required to interact with the Android NDK, Java's JNI, and C++ source code. More on [working with native code and Android Studio][add-native-code].
+要确保选择 "Include C++ support," 这样会开启很多与 Android NDK, Java's JNI, 和 C++源代码相关的功能。更多请参考[working with native code and Android Studio][add-native-code]。
 
 ![](/images/tflite-android/2.png)
 
-We will use Phone and Tablet devices for this guide, but other target devices should also work.
+我们这里介绍使用 “Phone and Tablet devices”，其他的设备应该也可以。
 
-Optionally, you can select instant run. This will speed up APK deployment times while debugging your simulator and/or devices. Read more about [instant run][instant-run].
+（可选项）另外，你可以选择 instant run，这个会在你的安卓虚拟机/设备debug的时候加速 APK 部署。更多关于[instant run][instant-run]。
 
 ![](/images/tflite-android/4.png)
 
-For a tutorial project we'll choose an Empty Activity. The Basic Activity includes a bit more skeleton code you may find useful. You can read more about activities [here][intro-to-activities].
+在这个示例项目中，我们选择 “Empty Activity”。在 ”Basic Activity" 中包含一些代码框架。更多关于 [avtivities][intro-to-activities]。
 
 ![](/images/tflite-android/5.png)
 
-On the next screen, we'll just continue with the defaults the project wizard provides us.
+在这一页面中，我们保持初始设置不变。
 
 ![](/images/tflite-android/6.png)
 
-Determining what C++ Standard to use or when to upgrade can be tricky. The idea here is to use the C++ Standard thats most compatible your libraries, dependencies and existing source code. For this tutorial we'll use the Toolchain Default. But future versions of your projects may use more modern C++... 
+决定用哪个 C++ Standard 或者什么时候要升级对每个人都不太一样。重点是要用能兼容你的库、依赖关系和你已经有的源代码。所以本文就使用 Toolchain Default，但是你的项目的未来的版本可能会需要新的 C++ Standard。
 
-Optionally you can enable Exceptions Support and Runtime Type Information. These allow native code exceptions to reach the Java Runtime and type information on dynamic types in your native code (e.g. auto types).
+（可选项）你可以选择Exceptions Support 和 Runtime Type Information，这个会使你的源代码的 exception 在 Java Runtime 中键入动态类型的信息（比如 auto）。
 
 ![](/images/tflite-android/7.png)
 
-After finishing the Android Studio project wizard you should see the Android Studio main window.
+在完成上述项目设定后，你会看到 Android Studio 主页面。
 
 ![](/images/tflite-android/8.png)
 
-# Building TensorFlow Lite [libtensorflowlite.so, libtflite.so]
+# 建立 TensorFlow Lite [libtensorflowlite.so, libtflite.so]
 
-Now that we've setup our Android Studio project we can start building TensorFlow Lite. And the first thing we need to do is [Get Bazel][bazel-url]. Install steps below...
+我们创建完Android Studio project 后要建立 TensorFlow Lite 库。我们首先要做的是：[Get Bazel][bazel-url]， 步骤如下：
 
-_Note: If you do not have Homebrew installed on your machine I strongly recommend you get it. It is one of the greatest package managers on Mac OS. [Get Homebrew][homebrew-url]_
+_注：如果你没有安装 Homebrew，我强烈推荐你使用，Homebrew 是 Mac OS 环境里最好的资源管理程序之一。[Get Homebrew][homebrew-url]_
 
-Installing Homebew (`brew`):
+安装 Homebrew (`brew`):
 
 ~~~
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ~~~
 
-Installing Bazel with Homebrew is the quickest way to get going:
+用 Homebrew 安装 Bazel 是最快的安装 Bazel 的方法。
 
 ~~~
 brew tap bazelbuild/tap
@@ -78,13 +79,13 @@ brew tap-pin bazelbuild/tap
 brew install bazelbuild/tap/bazel
 ~~~
 
-You can then verify `bazel` is working correctly. I used `0.18.1-homebrew` so your version may differ or may be incompatible at the time this article was written.
+你可以检查 `bazel` 是否可以正常运行. 这里我装了 `0.18.1-homebrew` 所以你的安装版本可能会和我写这篇文章的时候版本不同。
 
 ~~~
 bazel version
 ~~~
 
-Output:
+输出:
 
 ~~~
 ZimengMacbookPro:zimenglyu zimenglyu$ bazel version
