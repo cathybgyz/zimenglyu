@@ -24,7 +24,7 @@ linkedin_username: zimenglyu
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: jekyll-theme-merlot
 plugins:
   - jekyll-feed
 
