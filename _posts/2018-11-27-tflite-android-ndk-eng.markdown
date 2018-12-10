@@ -56,7 +56,7 @@ After finishing the Android Studio project wizard you should see the Android Stu
 
 ![](/images/tflite-android/8.png)
 
-# Building TensorFlow Lite [libtensorflowlite.so, libtflite.so]
+# Building TensorFlow Lite [libtensorflowlite.so]
 
 Now that we've setup our Android Studio project we can start building TensorFlow Lite. And the first thing we need to do is [Get Bazel][bazel-url]. Install steps below...
 
@@ -93,6 +93,146 @@ Build time: Fri Nov 2 11:16:42 2018 (1541157402)
 Build timestamp: 1541157402
 Build timestamp as int: 1541157402
 ~~~
+
+Now we need to install the required Android NDK and SDK version in Android Studio:
+
+Go to the SDK Manager in Android Studio:
+
+![](/images/tflite-android/10.png)
+
+And go to SDK Tools, and install the 4 items I highlighted here. SDK version >=23, Android SDK Build Tools API >= 26.0.1 and NDK >= 18 are required. Save the Android SDK Location and we will use it later.
+
+![](/images/tflite-android/11.png)
+
+If you can't see the Android SDK Build Tool version as shown above, your Android Studio has more than one version installed. Check the Show Pachage Details at bottom right and you would see all the Android SDK Build Tool versions you installed.
+
+![](/images/tflite-android/12.png)
+
+Clone the Tensorflow repository:
+
+~~~
+git clone https://github.com/tensorflow/tensorflow.git
+cd tensorflow
+~~~
+
+Now we edit the WORKSPACE file, add the following lines at the end of the WORKSPACE file. Make sure the path and package versions match yours. Ues the Android SDK path you saved earlier as the android_sdk_repository path here.
+
+~~~
+android_sdk_repository(
+   name = "androidsdk",
+   api_level = 28,
+   build_tools_version = "28.0.3",
+   path = "/Users/xxxx/Library/Android/sdk",
+)
+
+android_ndk_repository(
+   name="androidndk",
+   path="/Users/xxxx/Library/Android/sdk/ndk-bundle",
+   api_level=18
+)
+~~~
+
+Run `./configure` and answer yes when the script asks to automatically configure the `./WORKSPACE`. And match the SDK and NDK versions and paths with what you installed in Android Studio.
+
+Go to `tensorflow/lite` folder and add the following to the BUILD file:
+
+~~~
+cc_binary(
+    name = "libtensorflowLite.so",
+    linkopts=[
+        "-shared", 
+        "-Wl,-soname=libtensorflowLite.so",
+    ],
+    linkshared = 1,
+    copts = tflite_copts(),
+    deps = [
+        ":framework",
+        "//tensorflow/lite/kernels:builtin_ops",
+    ],
+)
+~~~
+
+Now we can build the libtensorflowlite.so file by running the following command in the tensorflow root folder:
+
+~~~
+bazel build //tensorflow/lite:libtensorflowLite.so --crosstool_top=//external:android/crosstool --cpu=armeabi-v8a --host_crosstool_top=@bazel_tools//tools/cpp:toolchain --cxxopt="-std=c++11"
+~~~
+
+When I ran this command, I encountered an error message:
+
+~~~
+WARNING: Duplicate rc file: /Users/xxxx/Documents/GitHub/tensorflow/tools/bazel.rc is read multiple times, most recently imported from /Users/zimenglyu/Documents/GitHub/tensorflow/.bazelrc
+~~~
+
+If you meet the same error, make sure you don't have multiple .bazelrc files. I found one in my root Tensorflow git directory. Removing it cleared this warning and allowed me to continue compiling the tflite library.
+
+After successfully run the bazel command, you can find libtensorflowlite.so in `bazel-out/arm64-v8a-opt/bin/tensorflow/lite/` folder.
+
+Edit the CMakeLists.txt in your Android Studio and add the following:
+
+~~~
+set(pathToTensorflowLite /Users/xxxx/Documents/cpplibs/libraries/tensorflow-lite/distribution)
+
+add_library(libtensorflowLite SHARED IMPORTED)
+
+set_target_properties(libtensorflowLite PROPERTIES IMPORTED_LOCATION
+    ${pathToTensorflowLite}/lib/${ANDROID_ABI}/libtensorflowLite.so)
+
+target_include_directories(native-lib PRIVATE
+            ${pathToTensorflowLite}/include)
+
+target_link_libraries( native-lib
+                       libtensorflowLite
+                       ${log-lib} )
+~~~
+
+The file structure of the example above is:
+
+* distribution
+  * lib
+    * armeabi-v8a
+      * libtensorflowLite.so
+  * include
+    * flatbuffers
+    * tensorflow
+
+clone the flatbuffers repository:
+
+~~~
+git clone https://github.com/google/flatbuffers.git
+~~~
+
+Put all the flatbuffer header files in the `distribution/include/flatbuffers` folder. And put the `tensorflow/tensorflow` folder in the `distribution/include` folder
+
+Open the build.gradle(Module:App) and add the following lines to Andriod section:
+
+~~~
+sourceSets {
+        main {
+            // let gradle pack the shared library into apk
+            jni.srcDirs = ["libs"]
+        }
+    }
+~~~
+
+After all those steps you are all set!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 [project-repo]: https://github.com/cathybgyz/TFLiteExample
 [android-studio]: https://developer.android.com/studio/
