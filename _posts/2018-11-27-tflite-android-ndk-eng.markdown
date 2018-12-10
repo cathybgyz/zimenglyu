@@ -215,7 +215,7 @@ sourceSets {
     }
 ~~~
 
-After all those steps you are all set!
+Next step we will build a sample app, will update soon...
 
 
 
