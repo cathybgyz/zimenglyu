@@ -94,28 +94,28 @@ Build timestamp: 1541157402
 Build timestamp as int: 1541157402
 ~~~
 
-Now we need to install the required Android NDK and SDK version in Android Studio:
+Next, we need to install the required Android NDK and SDK versions in Android Studio:
 
 Go to the SDK Manager in Android Studio:
 
 ![](/images/tflite-android/10.png)
 
-And go to SDK Tools, and install the 4 items I highlighted here. SDK version >=23, Android SDK Build Tools API >= 26.0.1 and NDK >= 18 are required. Save the Android SDK Location and we will use it later.
+Then go to SDK Tools, and install the 4 items I highlighted here. SDK version `>=23`, Android SDK Build Tools API `>= 26.0.1` and NDK `>= 18` are required. Save the Android SDK Location and we will use it later.
 
 ![](/images/tflite-android/11.png)
 
-If you can't see the Android SDK Build Tool version as shown above, your Android Studio has more than one version installed. Check the Show Pachage Details at bottom right and you would see all the Android SDK Build Tool versions you installed.
+If you can't see the Android SDK Build Tool version as shown above, your Android Studio has more than one version installed. Check the Show Pachage Details at bottom right and you would see all the Android SDK Build Tool versions you've installed.
 
 ![](/images/tflite-android/12.png)
 
-Clone the Tensorflow repository:
+Clone the official Tensorflow Github repository:
 
 ~~~
 git clone https://github.com/tensorflow/tensorflow.git
 cd tensorflow
 ~~~
 
-Now we edit the WORKSPACE file, add the following lines at the end of the WORKSPACE file. Make sure the path and package versions match yours. Ues the Android SDK path you saved earlier as the android_sdk_repository path here.
+Now lets edit the `WORKSPACE` file found inside the root directory of Tensorflow repo. Add the following lines to the end of the `WORKSPACE` file. Make sure the path and package versions match the ones you've installed in Android Studio. Use the Android SDK path you saved earlier as the `android_sdk_repository` path here.
 
 ~~~
 android_sdk_repository(
@@ -132,9 +132,11 @@ android_ndk_repository(
 )
 ~~~
 
-Run `./configure` and answer yes when the script asks to automatically configure the `./WORKSPACE`. And match the SDK and NDK versions and paths with what you installed in Android Studio.
+Run `./configure` and answer yes when asked to automatically configure the `./WORKSPACE`. And match the SDK and NDK versions and paths with what you installed in Android Studio.
 
-Go to `tensorflow/lite` folder and add the following to the BUILD file:
+Next, go to `tensorflow/lite` directory and add the following to the `BUILD` file:
+
+_NOTE: older versions of the Tensorflow repository locate the `lite` folder inside `tensorflow/contrib`. These `BUILD` settings will not work unless you adjust for the proper paths._
 
 ~~~
 cc_binary(
@@ -152,23 +154,23 @@ cc_binary(
 )
 ~~~
 
-Now we can build the libtensorflowlite.so file by running the following command in the tensorflow root folder:
+Now we can build the libtensorflowlite.so file by running the following command from the root directory of the Tensorflow repository:
 
 ~~~
 bazel build //tensorflow/lite:libtensorflowLite.so --crosstool_top=//external:android/crosstool --cpu=armeabi-v8a --host_crosstool_top=@bazel_tools//tools/cpp:toolchain --cxxopt="-std=c++11"
 ~~~
 
-When I ran this command, I encountered an error message:
+When I ran this command, I encountered the following warning:
 
 ~~~
 WARNING: Duplicate rc file: /Users/xxxx/Documents/GitHub/tensorflow/tools/bazel.rc is read multiple times, most recently imported from /Users/zimenglyu/Documents/GitHub/tensorflow/.bazelrc
 ~~~
 
-If you meet the same error, make sure you don't have multiple .bazelrc files. I found one in my root Tensorflow git directory. Removing it cleared this warning and allowed me to continue compiling the tflite library.
+If you get the same warning make sure you don't have multiple `.bazelrc` files (may be hidden). I found one in the root directory of my local Tensorflow repo. Removing it cleared this warning and allowed me to continue compiling the tflite library.
 
-After successfully run the bazel command, you can find libtensorflowlite.so in `bazel-out/arm64-v8a-opt/bin/tensorflow/lite/` folder.
+After successfully running the bazel command, you can find `libtensorflowlite.so` in `bazel-out/arm64-v8a-opt/bin/tensorflow/lite/` folder. The folder is aliased in the root directory of your Tensorflow repository.
 
-Edit the CMakeLists.txt in your Android Studio and add the following:
+Next, we'll edit the CMakeLists.txt in your Android Studio and add the following:
 
 ~~~
 set(pathToTensorflowLite /Users/xxxx/Documents/cpplibs/libraries/tensorflow-lite/distribution)
