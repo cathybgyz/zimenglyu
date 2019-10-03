@@ -10,7 +10,7 @@ sudo gem install bundler jekyll
 
 2) Clone the repo
 ```
-git clone https://github.com/cathybgyz/zimenglyu.git
+git clone https://github.com/zimenglyu/zimenglyu.git
 ```
 
 3) Run the site

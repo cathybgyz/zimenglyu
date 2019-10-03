@@ -217,26 +217,7 @@ sourceSets {
     }
 ~~~
 
-Next step we will build a sample app, will update soon...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[project-repo]: https://github.com/cathybgyz/TFLiteExample
+[project-repo]: https://github.com/zimenglyu/TFLiteExample
 [android-studio]: https://developer.android.com/studio/
 [add-native-code]: https://developer.android.com/studio/projects/add-native-code
 [instant-run]: https://developer.android.com/studio/run/#instant-run
