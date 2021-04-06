@@ -1,9 +1,9 @@
 body {
     background-color: #fff;
     padding: 50px;
-    font-family: "Crimson Text",serif;
+    font-family: "Noto Sans JP",serif;
     color: #333;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 h1,h2 {
@@ -12,16 +12,16 @@ h1,h2 {
 }
 
 h1 {
-    margin: 0 0 20px;
-    font-size: 28px;
-    font-weight: 600;
+    margin: 0 0 40px;
+    font-size: 40px;
+    font-weight: 800;
 }
 
 h2 {
-    margin: 0 0 10px;
+    margin: 0 0 30px;
     color: #393939;
-    font-weight: 400;
-    font-size: 21px;
+    font-weight: 600;
+    font-size: 30px;
 }
 
 img {
@@ -32,11 +32,13 @@ img {
 }
 
 header p {
-    margin: 0 0 10px;
+    margin: 0 0 20px;
+    font-size: 20px;
 }
 
 p,ul,ol,pre {
-    margin: 0 0 20px;
+    margin: 0 0 30px;
+    font-size: 18px;
 }
 
 a {
@@ -49,7 +51,7 @@ a:hover {
 }
 
 .wrapper {
-    width: 860px;
+    width: 1000px;
     margin: 0 auto;
 }
 
@@ -76,7 +78,7 @@ header ul a strong {
 }
 
 section {
-    width: 500px;
+    width: 700px;
     float: right;
     padding-bottom: 50px;
     padding-right: 50px;
@@ -109,7 +111,7 @@ footer {
     }
 
     section {
-        max-width: 500px
+        max-width: 700px
     }
 
     header {
