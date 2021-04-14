@@ -1,11 +1,3 @@
----
-layout: post
-title:  "TensorFlow Lite, Android NDK"
-author: Zimeng Lyu
-date:   2018-11-27 10:35:26 -0500
-categories: en ml android tensorflow
----
-
 Github: [TFLiteExample][project-repo]
 
 # Purpose
@@ -20,41 +12,41 @@ We'll start by creating an Android Studio project in Android Studio. If you alre
 
 _Note: If you don't have Android Studio installed you can [Get Android Studio][android-studio]_
 
-An Android Studio project is the foundation for all Android platform applications. The project directory contains all of your graphical interfaces, source code, images and resources. It also includes the references and build instructions for your library code. You may know some of them: CMakeLists.txt, build.gradle, android.mk etc. While this guide does not get into details about these resources, you should learn how they work in your projects.
+An Android Studio project is the foundation for all Android platform applications. The project directory contains all of your graphical interfaces, source code, img and resources. It also includes the references and build instructions for your library code. You may know some of them: CMakeLists.txt, build.gradle, android.mk etc. While this guide does not get into details about these resources, you should learn how they work in your projects.
 
 First, open Android Studio and click "Start a new Android Studio project". This will initiate the new project wizard.
 
-![](/images/tflite-android/1.png)
+![](/img/tflite-android/1.png)
 
 Next, give your project an application name, company domain (important when deploying your app to the Play Store and also influences your Java code namespaces), project location, and package name. 
 
 Be sure to check "Include C++ support," as this will enable many of the features required to interact with the Android NDK, Java's JNI, and C++ source code. More on [working with native code and Android Studio][add-native-code].
 
-![](/images/tflite-android/2.png)
+![](/img/tflite-android/2.png)
 
 We will use Phone and Tablet devices for this guide, but other target devices should also work.
 
 Optionally, you can select instant run. This will speed up APK deployment times while debugging your simulator and/or devices. Read more about [instant run][instant-run].
 
-![](/images/tflite-android/4.png)
+![](/img/tflite-android/4.png)
 
 For a tutorial project we'll choose an Empty Activity. The Basic Activity includes a bit more skeleton code you may find useful. You can read more about activities [here][intro-to-activities].
 
-![](/images/tflite-android/5.png)
+![](/img/tflite-android/5.png)
 
 On the next screen, we'll just continue with the defaults the project wizard provides us.
 
-![](/images/tflite-android/6.png)
+![](/img/tflite-android/6.png)
 
 Determining what C++ Standard to use or when to upgrade can be tricky. The idea here is to use the C++ Standard thats most compatible your libraries, dependencies and existing source code. For this tutorial we'll use the Toolchain Default. But future versions of your projects may use more modern C++... 
 
 Optionally you can enable Exceptions Support and Runtime Type Information. These allow native code exceptions to reach the Java Runtime and type information on dynamic types in your native code (e.g. auto types).
 
-![](/images/tflite-android/7.png)
+![](/img/tflite-android/7.png)
 
 After finishing the Android Studio project wizard you should see the Android Studio main window.
 
-![](/images/tflite-android/8.png)
+![](/img/tflite-android/8.png)
 
 # Building TensorFlow Lite [libtensorflowlite.so]
 
@@ -98,15 +90,15 @@ Next, we need to install the required Android NDK and SDK versions in Android St
 
 Go to the SDK Manager in Android Studio:
 
-![](/images/tflite-android/10.png)
+![](/img/tflite-android/10.png)
 
 Then go to SDK Tools, and install the 4 items I highlighted here. SDK version `>=23`, Android SDK Build Tools API `>= 26.0.1` and NDK `>= 18` are required. Save the Android SDK Location and we will use it later.
 
-![](/images/tflite-android/11.png)
+![](/img/tflite-android/11.png)
 
 If you can't see the Android SDK Build Tool version as shown above, your Android Studio has more than one version installed. Check the Show Pachage Details at bottom right and you would see all the Android SDK Build Tool versions you've installed.
 
-![](/images/tflite-android/12.png)
+![](/img/tflite-android/12.png)
 
 Clone the official Tensorflow Github repository:
 

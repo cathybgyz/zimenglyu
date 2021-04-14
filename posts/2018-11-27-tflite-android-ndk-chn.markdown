@@ -1,11 +1,3 @@
----
-layout: post
-title:  "在 Android NDK 上使用 C++ TensorFlow Lite 步骤"
-author: 吕子蒙
-date:   2018-11-27 10:35:26 -0500
-categories: cn ml android tensorflow
----
-
 Github: [TFLiteExample][project-repo]
 
 # 前言
@@ -27,37 +19,37 @@ Android Studio project 是所有Android平台应用程序的基础。项目目�
 首先，打开 Android Studio 并点击 "Start a new Android Studio project" 来打开新的项目页面。
 
 
-![](/images/tflite-android/1.png)
+![](/img/tflite-android/1.png)
 
 接着，填写应用程序名称，公司域名（在将应用程序部署到Play商店时很重要，也会影响Java代码名称空间），项目位置和 package 名称。
 
 要确保选择 "Include C++ support," 这样会开启很多与 Android NDK, Java's JNI, 和 C++源代码相关的功能。更多请参考[working with native code and Android Studio][add-native-code]。
 
-![](/images/tflite-android/2.png)
+![](/img/tflite-android/2.png)
 
 我们这里介绍使用 “Phone and Tablet devices”，其他的设备应该也可以。
 
 （可选项）另外，你可以选择 instant run，这个会在你的安卓虚拟机/设备debug的时候加速 APK 部署。更多关于[instant run][instant-run]。
 
-![](/images/tflite-android/4.png)
+![](/img/tflite-android/4.png)
 
 在这个示例项目中，我们选择 “Empty Activity”。在 ”Basic Activity" 中包含一些代码框架。更多关于 [avtivities][intro-to-activities]。
 
-![](/images/tflite-android/5.png)
+![](/img/tflite-android/5.png)
 
 在这一页面中，我们保持初始设置不变。
 
-![](/images/tflite-android/6.png)
+![](/img/tflite-android/6.png)
 
 决定用哪个 C++ Standard 或者什么时候要升级对每个人都不太一样。重点是要用能兼容你的库、依赖关系和你已经有的源代码。所以本文就使用 Toolchain Default，但是你的项目的未来的版本可能会需要新的 C++ Standard。
 
 （可选项）你可以选择Exceptions Support 和 Runtime Type Information，这个会使你的源代码的 exception 在 Java Runtime 中键入动态类型的信息（比如 auto）。
 
-![](/images/tflite-android/7.png)
+![](/img/tflite-android/7.png)
 
 在完成上述项目设定后，你会看到 Android Studio 主页面。
 
-![](/images/tflite-android/8.png)
+![](/img/tflite-android/8.png)
 
 # 建立 TensorFlow Lite [libtensorflowlite.so, libtflite.so]
 
