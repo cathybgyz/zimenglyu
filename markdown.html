@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJJ0JLNGDJ"></script>
+        <script>
+            window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-HJJ0JLNGDJ');
+        </script>
+        <title>Zimeng Lyu</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="author" content="Zimeng Lyu"/>
+        <meta name="description" content="Zimeng's little corner of the internet.">
+        <meta property="og:locale" content="en_US"/>
+        <meta property="og:title" content="Zimeng Lyu"/>
+        <meta property="og:url" content="https://zimenglyu.com/"/>
+        <meta property="og:image" content="https://zimenglyu.com/img/profile.jpg"/>
+        <meta property="og:site_name" content="Zimeng Lyu"/>
+        <meta property="og:description" content="Zimeng's little corner of the internet."/>
+        <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet"> -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet"/>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+        <link rel="canonical" href="https://zimenglyu.com/">    
+        <script src="js/showdown.min.js"></script>
+        <script src="js/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div id="content"></div>
+        </div>
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const post = params.get('post');
+
+            $.ajax({
+                url: "posts/" + post,
+                type: "GET",
+                dataType: "text",
+                success: function (results) {
+                    var conv = new Showdown.Converter();
+                    document.getElementById('content').innerHTML = conv.makeHtml(results);
+                }
+            });
+        </script>
+        <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="1599ed9b9a62fcc09bb6b928-|49" defer=""></script>
+    </body>
+</html>
