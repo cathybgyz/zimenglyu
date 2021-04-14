@@ -39,7 +39,7 @@
                 type: "GET",
                 dataType: "text",
                 success: function (results) {
-                    var conv = new Showdown.Converter();
+                    var conv = new showdown.Converter();
                     document.getElementById('content').innerHTML = conv.makeHtml(results);
                 }
             });
