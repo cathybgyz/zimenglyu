@@ -26,6 +26,15 @@ h2 {
     margin-top:30px;
 }
 
+h3 {
+    margin: 0 0 20px;
+    color: #393939;
+    font-weight: 300;
+    font-size: 30px;
+    margin-top:10px;
+}
+
+
 img {
     padding-bottom: 30px;
     width: 275px;
