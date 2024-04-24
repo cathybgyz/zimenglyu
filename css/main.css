@@ -45,7 +45,7 @@ h4 {
 img {
     padding-bottom: 30px;
     width: 275px;
-    height: 275px;
+    /* height: 275px; */
     max-width: 100%;
 }
 
