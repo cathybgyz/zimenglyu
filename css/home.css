@@ -1,0 +1,254 @@
+/* Hero Section */
+.hero {
+    margin-bottom: 4rem;
+}
+
+.hero-content {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-image {
+    flex-shrink: 0;
+}
+
+.profile-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.hero-text {
+    flex-grow: 1;
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.hero-text h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--light-text);
+    margin-bottom: 1rem;
+}
+
+.hero-bio {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.hero-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    padding: 0.5rem 1rem;
+    background: var(--light-bg);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.social-link:hover {
+    background: var(--hover-color);
+    transform: translateY(-1px);
+}
+
+/* Research Areas Section */
+.section {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.research-card {
+    background: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.research-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.research-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.research-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* News Section */
+.news-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.news-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--light-bg);
+    border-radius: 0.5rem;
+}
+
+.news-date {
+    font-weight: 500;
+    color: var(--light-text);
+    min-width: 100px;
+}
+
+.news-content h3 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.news-content p {
+    margin-bottom: 1rem;
+}
+
+.news-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.news-link:hover {
+    text-decoration: underline;
+}
+
+/* Featured Publications */
+.featured-publications {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.publication-card {
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background: var(--background);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.publication-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.publication-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.publication-authors {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.publication-venue {
+    color: var(--light-text);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.publication-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.pub-link {
+    padding: 0.5rem 1rem;
+    background: var(--light-bg);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.pub-link:hover {
+    background: var(--hover-color);
+}
+
+/* Responsive Design */
+@media (max-width: 960px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .news-card {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .news-date {
+        min-width: auto;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .publication-links {
+        flex-direction: column;
+    }
+
+    .pub-link {
+        text-align: center;
+    }
+}

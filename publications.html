@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Zimeng Lyu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/publications.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Zimeng Lyu</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="research.html" class="nav-link">Research</a>
+                <a href="publications.html" class="nav-link active">Publications</a>
+                <a href="teaching.html" class="nav-link">Teaching</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Publications Header -->
+        <header class="page-header" data-aos="fade-up">
+            <h1>Publications</h1>
+            <div class="publication-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="journal">Journal Articles</button>
+                <button class="filter-btn" data-filter="conference">Conference Papers</button>
+                <button class="filter-btn" data-filter="preprint">Preprints</button>
+            </div>
+        </header>
+
+        <!-- Journal Articles -->
+        <section class="section" data-aos="fade-up">
+            <h2 class="section-title">Journal Articles</h2>
+            <div class="publications-grid">
+                <div class="publication-card">
+                    <h3>Online Evolutionary Neural Architecture Search for Multivariate Non-Stationary Time Series Forecasting</h3>
+                    <p class="publication-authors">Zimeng Lyu, Alexander Ororbia and Travis Desell</p>
+                    <p class="publication-venue">Applied Soft Computing, June 2023</p>
+                    <div class="publication-links">
+                        <a href="https://www.sciencedirect.com/science/article/pii/S1568494623005409" class="pub-link">Paper</a>
+                        <a href="#" class="pub-link">Code</a>
+                        <a href="#" class="pub-link">Cite</a>
+                    </div>
+                </div>
+
+                <div class="publication-card">
+                    <h3>Backpropagation-free 4D continuous ant-based neural topology search</h3>
+                    <p class="publication-authors">AbdElRahman ElSaid, Karl Ricanek, Zimeng Lyu, Alexander Ororbia, Travis Desell</p>
+                    <p class="publication-venue">Applied Soft Computing, August 2023</p>
+                    <div class="publication-links">
+                        <a href="https://www.sciencedirect.com/science/article/abs/pii/S156849462300755X" class="pub-link">Paper</a>
+                        <a href="#" class="pub-link">Cite</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conference Papers -->
+        <section class="section" data-aos="fade-up">
+            <h2 class="section-title">Conference Proceedings</h2>
+            <div class="publications-grid">
+                <div class="publication-card">
+                    <h3>Minimally Supervised Topological Projections of Self-Organizing Maps for Phase of Flight Identification</h3>
+                    <p class="publication-authors">Zimeng Lyu, Pujan Thapa and Travis Desell</p>
+                    <p class="publication-venue">WCCI IJCNN 2024, July 2024</p>
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/2402.11185" class="pub-link">Paper</a>
+                        <a href="#" class="pub-link">Slides</a>
+                    </div>
+                </div>
+
+                <!-- Add more conference papers -->
+            </div>
+        </section>
+
+        <!-- Preprints -->
+        <section class="section" data-aos="fade-up">
+            <h2 class="section-title">Preprints</h2>
+            <div class="publications-grid">
+                <div class="publication-card">
+                    <h3>Minimally Supervised Learning using Topological Projections in Self-Organizing Maps</h3>
+                    <p class="publication-authors">Zimeng Lyu, Alexander Ororbia and Travis Desell</p>
+                    <p class="publication-venue">arXiv: Machine Learning (cs.ML), January 2024</p>
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/2401.06923" class="pub-link">Paper</a>
+                        <a href="#" class="pub-link">Code</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-social">
+                    <a href="https://github.com/zimenglyu" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/zimenglyu/" target="_blank">LinkedIn</a>
+                    <a href="https://scholar.google.com/citations?user=Rj5sUgkAAAAJ&hl=en" target="_blank">Google Scholar</a>
+                </div>
+                <p>&copy; 2024 Zimeng Lyu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Publication filters
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                // Add filter logic here
+            });
+        });
+    </script>
+</body>
+</html>
