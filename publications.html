@@ -38,7 +38,7 @@
         </header>
 
         <!-- Journal Articles -->
-        <section class="section" data-aos="fade-up">
+        <section id="journal" class="section" data-aos="fade-up">
             <h2 class="section-title">Journal Articles</h2>
             <div class="publications-grid">
                 <div class="publication-card">
@@ -75,7 +75,7 @@
         </section>
 
         <!-- Conference Papers -->
-        <section class="section" data-aos="fade-up">
+        <section id="conference" class="section" data-aos="fade-up">
             <h2 class="section-title">Conference Proceedings</h2>
             <div class="publications-grid">
                 <div class="publication-card">
@@ -189,7 +189,7 @@
         </section>
 
         <!-- Preprints -->
-        <section class="section" data-aos="fade-up">
+        <section id="preprint" class="section" data-aos="fade-up">
             <h2 class="section-title">Preprints</h2>
             <div class="publications-grid">
                 <div class="publication-card">
@@ -287,13 +287,41 @@
 
         // Publication filters
         const filterBtns = document.querySelectorAll('.filter-btn');
+        
+        // Calculate offset for fixed header
+        const getOffset = () => {
+            const navbar = document.querySelector('.navbar');
+            return navbar ? navbar.offsetHeight + 20 : 0; // Add 20px padding
+        };
+
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 // Remove active class from all buttons
                 filterBtns.forEach(b => b.classList.remove('active'));
                 // Add active class to clicked button
                 btn.classList.add('active');
-                // Add filter logic here
+                
+                const filter = btn.getAttribute('data-filter');
+                if (filter === 'all') {
+                    // Show all sections and scroll to top
+                    document.querySelectorAll('.section').forEach(section => {
+                        section.style.display = 'block';
+                    });
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // Scroll to specific section
+                    const section = document.getElementById(filter);
+                    if (section) {
+                        const offsetTop = section.offsetTop - getOffset();
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
             });
         });
     </script>
