@@ -1,51 +1,5 @@
 /* Research Page Specific Styles */
 
-/* Collaboration Banner */
-.collaboration-banner {
-    background: var(--gradient-dream);
-    border: none;
-    border-radius: 1.5rem;
-    padding: 4rem 2rem;
-    margin: 2rem auto;
-    max-width: 1200px;
-    color: white;
-    text-align: center;
-    box-shadow: 
-        0 12px 30px rgba(159,108,247,0.2),
-        0 4px 8px rgba(247,168,216,0.15);
-    position: relative;
-    overflow: hidden;
-}
-
-.collaboration-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.1) 0%,
-        rgba(255,255,255,0.05) 100%
-    );
-    pointer-events: none;
-}
-
-.collab-button {
-    background: white;
-    color: var(--accent-purple);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    border: none;
-}
-
-.collab-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    background: var(--light-bg);
-}
-
 /* Project Cards */
 .project-cards {
     display: grid;
@@ -144,4 +98,38 @@
     height: 2px;
     background: var(--gradient-dream);
     opacity: 0.5;
+}
+
+/* Update page header styles to match teaching */
+.page-header {
+    text-align: left;
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    text-align: left;
+    font-size: 2rem;
+    background: var(--gradient-dream);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+
+.page-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-dream);
+    opacity: 0.5;
+}
+
+.page-header p {
+    color: var(--light-text);
 }

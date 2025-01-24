@@ -75,21 +75,23 @@
     );
 }
 
-/* Navigation enhancements */
-.nav-link {
-    background: transparent;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+/* Update the navigation styles */
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;  /* Add this to ensure vertical alignment */
 }
 
-.nav-link:hover {
-    color: var(--accent-purple);
-    background: linear-gradient(
-        135deg,
-        rgba(159,108,247,0.1) 0%,
-        rgba(247,168,216,0.1) 100%
-    );
+.nav-link {
+    position: relative;
+    padding: 0.5rem 0;    /* Add consistent padding */
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link.active {
+    color: var(--primary-color);
 }
 
 .nav-link::after {
@@ -104,8 +106,19 @@
     transition: transform 0.3s ease;
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     transform: scaleX(1);
+}
+
+/* Update navbar container for consistent spacing */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;    /* Add consistent padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* Button and link styling */
@@ -156,15 +169,6 @@ main {
     backdrop-filter: blur(10px);
 }
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .nav-logo {
     font-size: 1.5rem;
     font-weight: 600;
@@ -173,11 +177,6 @@ main {
     background-clip: text;
     color: transparent;
     text-decoration: none;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
 }
 
 /* Footer */

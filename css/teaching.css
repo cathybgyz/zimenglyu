@@ -1,8 +1,7 @@
 /* Teaching Page Specific Styles */
 .header-subtitle {
-    font-size: 1.25rem;
     color: var(--light-text);
-    text-align: center;
+    font-size: 1.1rem;
     margin-bottom: 2rem;
 }
 
@@ -91,63 +90,213 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.course-header h2 {
+    background: var(--gradient-dream);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 1.75rem;
+    margin: 0;
 }
 
 .course-term {
     background: var(--light-bg);
     padding: 0.5rem 1rem;
-    border-radius: 0.375rem;
+    border-radius: 0.5rem;
     color: var(--primary-color);
     font-weight: 500;
 }
 
-.course-card {
-    background: var(--background);
+/* Course Overview Card */
+.course-overview {
+    background: var(--gradient-crystal);
     border: 1px solid var(--border-color);
     border-radius: 0.5rem;
-    padding: 2rem;
+    padding: 1.5rem;
     margin-bottom: 2rem;
+}
+
+.course-overview h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+/* Materials Grid */
+.materials-grid {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.material-card {
+    background: var(--gradient-crystal);
+    border: 1px solid rgba(226,224,243,0.5);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.material-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(159,108,247,0.3);
+    box-shadow: 
+        0 8px 25px rgba(159,108,247,0.1),
+        0 2px 5px rgba(247,168,216,0.1);
+}
+
+.material-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.material-header h3 {
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.material-content {
+    padding: 1.5rem;
+}
+
+/* Material Links */
+.material-links {
+    display: grid;
+    gap: 1rem;
+}
+
+.material-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: var(--gradient-pearl);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.material-link:hover {
+    background: var(--gradient-magic);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(159,108,247,0.15);
+}
+
+.material-link.unreleased {
+    background: var(--light-bg);
+    color: var(--light-text);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.material-link.unreleased:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.link-icon {
+    margin-right: 0.75rem;
+    font-size: 1.25rem;
 }
 
 /* Projects Section */
-.material-card {
-    background: var(--background);
+.project-item {
+    background: var(--gradient-crystal);
     border: 1px solid var(--border-color);
     border-radius: 0.5rem;
-    padding: 2rem;
-    margin-bottom: 2rem;
-}
-
-.project-item {
-    border: 1px solid var(--border-color);
-    border-radius: 0.375rem;
-    overflow: hidden;
     margin-bottom: 1.5rem;
 }
 
-.project-item h4 {
-    background: var(--light-bg);
-    padding: 1rem;
-    margin: 0;
-    color: var(--primary-color);
+.project-item:last-child {
+    margin-bottom: 0;
 }
 
-.project-placeholder {
-    padding: 1.5rem;
-    text-align: center;
-    color: var(--light-text);
+.project-item h4 {
+    background: var(--gradient-dream);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding: 1.25rem;
+    margin: 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.project-content {
+    padding: 1.25rem;
+}
+
+.project-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .course-header {
         flex-direction: column;
-        gap: 1rem;
-        text-align: center;
+        text-align: left;
     }
     
-    .announcement-banner {
-        margin: -1rem -1rem 2rem -1rem;
-        border-radius: 0;
+    .course-term {
+        align-self: flex-start;
     }
+}
+
+/* Update page header styles */
+.page-header {
+    text-align: left;  /* Change from center to left alignment */
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    text-align: left;  /* Change from center to left alignment */
+    font-size: 2rem;
+    background: var(--gradient-dream);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    width: fit-content;  /* Change from 100% to fit-content */
+}
+
+.page-header h1::after {
+    left: 0;  /* Change from 50% to 0 */
+    transform: none;  /* Remove the translateX */
+    width: 100%;  /* Make line match text width */
+}
+
+.program-title {
+    text-align: left;  /* Change from center to left alignment */
+}
+
+/* Add these new styles after the existing project styles */
+
+.project-part {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.project-part:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.project-part:first-child {
+    padding-top: 0;
+}
+
+.project-part h5 {
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
 }
